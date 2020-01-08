@@ -4,7 +4,7 @@
 export repo_dir="/repo1"
 export todate=`date +%Y%m%d`
 export totime=`date +%Y%m%d-%H%M%S`
-export repofile="/repo1/logs/reposync.log.$totime"
+export repofile="/repo1/logs/reposync7.log.$totime"
 export tmppath="/root/bin/temp"
 export fpath="/repo1/rhel7.repo"
 
@@ -43,7 +43,7 @@ echo "-------------------------------------$repos-------------------------------
 
 /usr/bin/reposync --gpgcheck -l --newest-only --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 echo "" >> $repofile
-createrepo $repo_dir/$repos >> $repofile 2>&1
+#createrepo $repo_dir/$repos >> $repofile 2>&1
 
 ### repo file Create
   echo "[$repos]" >> $fpath

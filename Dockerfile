@@ -28,8 +28,6 @@ RUN yum clean all -y > /dev/null
 ### Cron Setting
 # Seems like a container specific issue on Centos: https://github.com/CentOS/CentOS-Dockerfiles/issues/31 
 RUN sed -i '/session    required   pam_loginuid.so/d' /etc/pam.d/crond
-RUN echo "* 01 * * * /repo1/rhel7_reposync.sh" > /var/spool/cron/root > /dev/null 
-RUN touch /var/log/cron.log > /dev/null
 
 ### Cron Add
 ADD start-cron.txt /tmp/start-cron.txt
