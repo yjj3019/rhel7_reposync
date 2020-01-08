@@ -8,9 +8,6 @@ export repofile="/repo1/logs/reposync7.log.$totime"
 export tmppath="/root/bin/temp"
 export fpath="/repo1/rhel7.repo"
 
-### Modify Service IP
-export vip=$sip
-
 ### yum file check
 if [ -f /var/run/yum.pid ]; then
 echo "Start Fail.. YUM Run File Found : $repofile " >> $repofile
@@ -48,7 +45,7 @@ echo "" >> $repofile
 ### repo file Create
   echo "[$repos]" >> $fpath
   echo "name=$repos" >> $fpath
-  echo "baseurl=http://$vip/$repos" >> $fpath
+  echo "baseurl=http://$sip/$repos" >> $fpath
   echo "enable=1" >> $fpath
   echo "gpgcheck=0" >> $fpath
   echo "" >> $fpath
