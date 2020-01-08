@@ -22,11 +22,21 @@ else
 touch $repofile
 fi
 
+### Log Directory Check
+if [ ! -d $repo_dir/logs ]; then
+	echo "$repo_dir/logs Not Found " >> $repofile
+	mkdir -p $repo_dir/logs
+fi
+
+### Old Logs File Delete
+/usr/bin/find $repo_dir/logs -mtime +30 -exec rm -f {} \;
+
+### Start Time 
 echo "Start Time : $totime " >> $repofile
 
 ### repo file Create
 echo "#### Local Repository ####" > $fpath
-echo "#Create by : $(date +%Y%m%d-%H%M)" >> $fpath
+echo "#Create by : $totime" >> $fpath
 echo "" >> $fpath
 echo "" >> $fpath
 
@@ -38,7 +48,7 @@ do
 echo "-------------------------------------$repos-------------------------------------------" >> $repofile
 ### reposync
 
-if [ -d /repo1/$repos ]
+if [ -d $repo_dir/$repos ]
 then
 	/usr/bin/reposync --gpgcheck -l --newest-only --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 	echo "" >> $repofile
@@ -46,7 +56,6 @@ then
 else
 	/usr/bin/reposync --gpgcheck -l --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 	echo "" >> $repofile
-	
 fi
 
 ### repo file Create
