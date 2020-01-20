@@ -52,10 +52,12 @@ if [ -d $repo_dir/$repos ]
 then
 	/usr/bin/reposync --gpgcheck -l --newest-only --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 	echo "" >> $repofile
-	#createrepo $repo_dir/$repos >> $repofile 2>&1
+	createrepo $repo_dir/$repos >> $repofile 2>&1
 else
 	/usr/bin/reposync --gpgcheck -l --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 	echo "" >> $repofile
+	createrepo $repo_dir/$repos >> $repofile 2>&1
+else
 fi
 
 ### repo file Create
