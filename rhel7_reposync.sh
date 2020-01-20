@@ -16,10 +16,11 @@ exit 11
 fi
 
 ### repofile check
-if [ -f $repofile ]; then
-echo "Found File : $repofile " >> $repofile
+if [ -f $repofile ]
+then
+	echo "Found File : $repofile " >> $repofile
 else
-touch $repofile
+	touch $repofile
 fi
 
 ### Log Directory Check
@@ -57,7 +58,6 @@ else
 	/usr/bin/reposync --gpgcheck -l --downloadcomps --download-metadata -r $repos --download_path=$repo_dir >> $repofile 2>&1
 	echo "" >> $repofile
 	createrepo $repo_dir/$repos >> $repofile 2>&1
-else
 fi
 
 ### repo file Create
