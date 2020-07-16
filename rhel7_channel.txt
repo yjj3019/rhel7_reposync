@@ -10,3 +10,5 @@ rhel-7-server-ansible-2-rpms
 rhel-7-server-ansible-2.9-rpms
 rhel-7-server-ansible-2.8-rpms
 rhel-7-server-ansible-2.7-rpms
+rhel-sap-hana-for-rhel-7-server-rpms
+rhel-sap-for-rhel-7-server-rpms
