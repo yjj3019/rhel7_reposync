@@ -1,1 +1,1 @@
-* 23 * * * /root/reposync/rhel7_reposync.sh
+0 23 * * * /root/reposync/rhel7_reposync.sh
